@@ -6,29 +6,11 @@ fn main()
 {
     println!("Simple Geometry Example!");
 
-    let mut file = File::create("output.dae").unwrap();
+    let mut file = File::create("simple-geometry.dae").unwrap();
     let collada: collada_io::collada::Collada = collada_io::collada::Collada {
-        asset: collada_io::meta::Asset {
-            contributors: vec! {
-                collada_io::meta::Contributor {
-                    author: Some("Voxporter User".to_string()),
-                    author_email: None,
-                    author_website: None,
-                    authoring_tool: Some("Voxporter".to_string()),
-                    comments: None,
-                    copyright: None,
-                    source_data: None
-                }
-            },
-            created: chrono::Utc::now(),
-            keywords: None,
-            modified: chrono::Utc::now(),
-            revision: None,
-            subject: None,
-            title: None,
-            up_axis: Some(collada_io::meta::UpAxis::default()),
-            unit: collada_io::meta::Unit::default()
-        },
+        scene: None,
+        visual_scenes: None,
+        asset: collada_io::meta::Asset::default(),
         geometries: Some(vec!{
             collada_io::geometry::Geometry {
                 id: Some("Cube-mesh".to_string()),

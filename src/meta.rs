@@ -110,6 +110,22 @@ impl Contributor
     }
 }
 
+impl Default for Contributor
+{
+    fn default() -> Self 
+    {
+        Self {
+            author: Some("Voxporter User".to_string()),
+            author_email: None,
+            author_website: None,
+            authoring_tool: Some("Voxporter".to_string()),
+            comments: None,
+            copyright: None,
+            source_data: None
+        } 
+    }
+}
+
 impl Unit
 {
     pub fn write<W: Write>(&self, w: &mut EventWriter<W>) -> Result<()>
@@ -159,5 +175,25 @@ impl Asset
         write_end_element(w, "asset")?;
 
         Ok(())
+    }
+}
+
+impl Default for Asset
+{
+    fn default() -> Self 
+    { 
+        Self {
+            contributors: vec! {
+                Contributor::default()
+            },
+            created: chrono::Utc::now(),
+            keywords: None,
+            modified: chrono::Utc::now(),
+            revision: None,
+            subject: None,
+            title: None,
+            up_axis: Some(UpAxis::default()),
+            unit: Unit::default()
+        }
     }
 }
