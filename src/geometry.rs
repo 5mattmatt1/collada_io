@@ -122,9 +122,8 @@ impl FloatArray
                 value: &count_str
             }
         };
-        let data_str = self.data.iter().map(|float| float.to_string()).collect::<Vec<_>>().join(" ");
-
-        write_text_element(w, "float_array", &data_str, &attributes)?;
+        
+        write_vec_element(w, "float_array", &self.data, &attributes)?;
         Ok(())
     } 
 }
@@ -334,8 +333,7 @@ impl Triangles
         match &self.primitive
         {
             Some(primitive) => {
-                let text = primitive.iter().map(|idx| idx.to_string()).collect::<Vec<_>>().join(" ");
-                write_text_element(w, "p", &text, &Vec::new())?;
+                write_vec_element(w, "p", primitive, &Vec::new())?;
 
             }, None => {}
         }
