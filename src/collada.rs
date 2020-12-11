@@ -1,5 +1,6 @@
 use crate::geometry;
 use crate::meta;
+use crate::scene;
 
 pub static COLLADA_XMLNS: &'static str = "http://www.collada.org/2005/11/COLLADASchema";
 pub static COLLADA_XMLNS_XSI: &'static str = "http://www.w3.org/2001/XMLSchema-instance";
@@ -9,6 +10,7 @@ use std::io::Write;
 use xml::writer::{EmitterConfig, EventWriter, XmlEvent, Result};
 use xml::attribute::Attribute;
 use xml::common::XmlVersion;
+use crate::io::XmlWrite;
 use crate::util::*;
 
 
@@ -16,6 +18,8 @@ pub struct Collada
 {
     pub asset: meta::Asset,
     pub geometries: Option<Vec<geometry::Geometry>>,
+    pub visual_scenes: Option<Vec<scene::VisualScene>>,
+    pub scene: Option<scene::Scene>
 }
 
 impl Collada
@@ -57,8 +61,33 @@ impl Collada
                 }
 
                 write_end_element(w, "library_geometries")?;
-            }
+            },
             None => {
+
+            }
+        }
+
+        match &self.visual_scenes
+        {
+            Some(visual_scenes) => {
+                write_start_element(w, "library_visual_scenes", &Vec::new())?;
+                
+                for visual_scene in visual_scenes
+                {
+                    visual_scene.write(w)?;
+                }
+                
+                write_end_element(w, "library_visual_scenes")?;
+            }, None => {
+
+            }
+        }
+
+        match &self.scene
+        {
+            Some(scene) => {
+                scene.write(w)?;
+            }, None => {
 
             }
         }
