@@ -42,7 +42,7 @@ pub struct Accessor
 pub struct FloatArray
 {
     pub id: String, 
-    pub data: Vec<f64>,
+    pub data: Vec<f32>,
 }
 
 // Int, Float, Name, Sidref, Idref
