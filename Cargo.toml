@@ -8,7 +8,7 @@ version = "0.1.0"
 authors = ["Matthew Henderson <mattw2018@hotmail.com>"]
 edition = "2018"
 license = "MIT OR Apache-2.0"
-keywords = ["collada", "3d", "format"]
+keywords = ["collada", "dae", "3d", "format", "mesh"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

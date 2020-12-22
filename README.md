@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Rust library for writing COLLADA files according to the 1.5 specification.
+I wouldn't suggest using this library at the moment as it is documented at all, and Piston's collada library exists.
+I just needed some way to write out to COLLADA files for my own personal use, and I may update this library to be more useable.
 
 #### License
 
