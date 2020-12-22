@@ -1,12 +1,17 @@
 [package]
 name = "collada_io"
+description = "Collada input and output"
+readme = "README.md"
+homepage = "https://github.com/5mattmatt1/voxport"
+repository = "https://github.com/5mattmatt1/voxport"
 version = "0.1.0"
 authors = ["Matthew Henderson <mattw2018@hotmail.com>"]
 edition = "2018"
 license = "MIT OR Apache-2.0"
+keywords = ["collada", "3d", "format"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-xml-rs = "*"
+xml-rs = "0.8.3"
 chrono = "0.4"
